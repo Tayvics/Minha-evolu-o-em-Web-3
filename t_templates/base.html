@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Informação fixa na páginas devem ficar aqui, como o menu, rodapé, etc -->
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+    <br>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('indice') }}">Página Inicial</a></li>
+            <li><a href="{{ url_for('contato') }}">Contato</a></li>
+        </ul>
+    </nav>
+
+    {% block conteudo %}
+
+    {% endblock %}
+
+</body>
+</html>

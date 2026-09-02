@@ -1,4 +1,6 @@
+
 from flask import Flask, render_template
+'''
 
 meu_site = Flask(__name__)
 
@@ -49,6 +51,34 @@ def dados_usuario2(p_nome, p_profissao, p_disciplina):
 
 if __name__ == '__main__':
     meu_site.run(port=7000, debug=True)
+'''
+
+#FAZENDO ASSIM PARA ELE ENTENDER QUE IREMOS USAR O T-templates, POIS O FLASK POR PADRÃO PROCURA NA PASTA TEMPLATES
+app_mariela = Flask(__name__, template_folder='t_templates')
+@app_mariela.route('/')
+@app_mariela.route('/index')
+def indice():
+    return render_template('t_index.html', nome="Sergio")
 
 
 
+@app_mariela.route('/contato')
+def contato():
+    return render_template('t_contato.html')
+
+
+@app_mariela.route('/usuario', defaults={"nome_usuario":"usuario?", "nome_profissao":""})
+def usuario(nome_usuario, nome_profissao):
+    dados_usu ={"profissao": nome_profissao, "disciplina": "Desenvolvimento Web III"}
+    return render_template("t_usuario.html", nome=nome_usuario, dados=dados_usu)
+
+if __name__ == '__main__':
+    app_mariela.run(port=8000)
+'''
+Vantagens da Herança de Templates:
+ Reutilização de código: Evita duplicação ao manter cabeçalhos,
+rodapés e menus em um único arquivo.
+ Organização: Facilita a manutenção e leitura do código.
+ Flexibilidade: Blocos permitem personalização sem alterar a
+estrutura principal 
+'''
