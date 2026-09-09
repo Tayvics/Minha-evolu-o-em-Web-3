@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
 </head>
 <body>
     <!-- Informação fixa na páginas devem ficar aqui, como o menu, rodapé, etc -->
-    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+     <img class="imgquadrada" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" width="70" height="60">
     <br>
     <nav>
         <ul>
             <li><a href="{{ url_for('indice') }}">Página Inicial</a></li>
             <li><a href="{{ url_for('contato') }}">Contato</a></li>
+            <li><a href="{{ url_for('dados_usuario') }}">Perfil do Usuario</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
         </ul>
     </nav>
 

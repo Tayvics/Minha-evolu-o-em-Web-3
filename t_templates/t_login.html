@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+<!-- Diretiva do Flask para indicar que esta página herda do template base -->
+
+{% block conteudo %}
+    <form action="/autenticar" method="POST">
+        <!-- FORMULÁRIO DE LOGIN 
+         Ao clicar no botão OK, no submit vai para a rota de autenticação -->
+
+         <br/><br/>
+
+         Usuario: <input type="text" name="nome_usuario"><br/><br/>
+         Senha: <input type="text" name="senha"><br/><br/>
+         <button type="submit">OK</button>
+
+    </form>
+{% endblock %}

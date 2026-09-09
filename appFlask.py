@@ -17,10 +17,6 @@ def index():
 def contato():
     return render_template('contato.html')
 
-@meu_site.route('/usuario')
-def dados_usuario():
-    dados_usu = {"nome": "Mariela", "profissao": "Professora EBTT", "disciplina": "Desenvolvimento Web III"}
-    return render_template("usuario.html", dados=dados_usu)
 
 @meu_site.route('/rota2')
 def rota2():
@@ -66,15 +62,28 @@ def indice():
 def contato():
     return render_template('t_contato.html')
 
+@app_mariela.route('/usuario')
+def dados_usuario():
+    dados_usu = {"nome": "Mariela", "profissao": "Professora EBTT", "disciplina": "Desenvolvimento Web III"}
+    return render_template("t_usuario.html", dados=dados_usu)
+
+
+
+
+@app_mariela.route('/login')
+def login():
+    return render_template("t_login.html")
+
+if __name__ == '__main__':
+    app_mariela.run(port=8000)
+'''
+Não utiliado
 
 @app_mariela.route('/usuario', defaults={"nome_usuario":"usuario?", "nome_profissao":""})
 def usuario(nome_usuario, nome_profissao):
     dados_usu ={"profissao": nome_profissao, "disciplina": "Desenvolvimento Web III"}
     return render_template("t_usuario.html", nome=nome_usuario, dados=dados_usu)
 
-if __name__ == '__main__':
-    app_mariela.run(port=8000)
-'''
 Vantagens da Herança de Templates:
  Reutilização de código: Evita duplicação ao manter cabeçalhos,
 rodapés e menus em um único arquivo.
