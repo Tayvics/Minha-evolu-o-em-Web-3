@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, request
 '''
 
 meu_site = Flask(__name__)
@@ -67,8 +67,11 @@ def dados_usuario():
     dados_usu = {"nome": "Mariela", "profissao": "Professora EBTT", "disciplina": "Desenvolvimento Web III"}
     return render_template("t_usuario.html", dados=dados_usu)
 
-
-
+@app_mariela.route('/autenticar', methods=['GET', 'POST'])
+def autenticar():
+    usuario = request.form.get("nome_usuario")
+    senha = request.form.get("senha")
+    return f"usuario: {usuario} e senha: {senha} recebido com sucesso!"
 
 @app_mariela.route('/login')
 def login():
