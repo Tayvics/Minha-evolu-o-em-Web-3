@@ -7,29 +7,29 @@ from flask import redirect  #para redirecionar páginas
 # os templates coloca em outra pasta. 
 # Por padrão, fica na pasta templates e não precisa informar no template_folder,
 # mas se quiser armazenar em outra pasta indique nesse parâmetro.
-app_Mariela = Flask(__name__, template_folder='t_templates') 
+app_Tayna = Flask(__name__, template_folder='t_templates') 
 # no caso de usar flash pede a configuração de uma chave secreta
-app_Mariela.config['SECRET_KEY'] = "palavra-secreta-IFRO"
+app_Tayna.config["SECRET_KEY"] = "chave-para-exercicio"
 
-@app_Mariela.route("/")       #se no navegador digitar / ou /index
-@app_Mariela.route("/index")  
+@app_Tayna.route("/")       #se no navegador digitar / ou /index
+@app_Tayna.route("/index")  
 def indice():
-    return render_template ("t_index.html") 
+    return render_template("t_index.html", nome="Tayná")
 
-@app_Mariela.route("/contato")
+@app_Tayna.route("/contato")
 def contato():
     return render_template("t_contato.html") 
 
 #rota /usuarios COM passagem de argumentos
-@app_Mariela.route("/usuario/<nome_usuario>;<nome_profissao>")
+@app_Tayna.route("/usuario/<nome_usuario>;<nome_profissao>")
 #rota /usuarios SEM passagem de argumentos --> definir valor padrão com defaults
-@app_Mariela.route("/usuario", defaults={"nome_usuario":"usuário?","nome_profissao":""})  
+@app_Tayna.route("/usuario", defaults={"nome_usuario":"usuário?","nome_profissao":""})  
 def usuarios (nome_usuario, nome_profissao):
     dados_usu = {"profissao": nome_profissao, "disciplina":"Desenvolvimento Web III"}
     return render_template ("t_usuario.html", nome=nome_usuario, dados = dados_usu)  
 
 
-@app_Mariela.route("/login")
+@app_Tayna.route("/login")
 def login():
     return render_template("t_login_flash_js_cadastro.html") 
 
@@ -43,7 +43,7 @@ O GET é padrão, mas no caso do POST altere no html method="POST"
 
 
 """
-@app_Mariela.route("/autenticar", methods=['GET','POST']) 
+@app_Tayna.route("/autenticar", methods=['GET','POST']) 
 def autenticar():
     #método POST - pega nos fields (campos) do formulário
     usuario = request.form.get('nome_usuario')
@@ -77,12 +77,12 @@ def verificar_login(login, senha):
     else:
         return False
 
-@app_Mariela.route("/novocadastro/<nome_usuario>" , methods=['POST'])
-@app_Mariela.route("/novocadastro/", defaults={"nome_usuario":""} , methods=['POST'])
+@app_Tayna.route("/novocadastro/<nome_usuario>" , methods=['POST'])
+@app_Tayna.route("/novocadastro/", defaults={"nome_usuario":""} , methods=['POST'])
 def cadastroUsuario(nome_usuario):
     nome_usuario = request.form.get('nome_usuario')
     return render_template("t_cadastro.html", nome_login = nome_usuario ) 
 
-if __name__ == "__main__": 
-     app_Mariela.run(port = 8000) 
+if __name__ == "__main__":
+    app_Tayna.run(port=8000, debug=True)
      
