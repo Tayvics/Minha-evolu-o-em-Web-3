@@ -111,7 +111,7 @@ No Windows, pelo PowerShell, é possível usar diretamente o Python do ambiente 
 ### 5. Executar a aplicação
 
 ```powershell
-& ".\.venv\Scripts\python.exe" appFlask_v8.py
+& python appFlask_v8.py
 ```
 
 Acesse:
@@ -141,7 +141,7 @@ python -m pip install -r requirements.txt
 python appFlask_v8.py
 ```
 
-O ambiente virtual é utilizado apenas localmente e não deve ser enviado ao GitHub.
+Observação: ambiente virtual é utilizado apenas localmente e não deve ser enviado ao GitHub.
 
 ---
 
@@ -213,17 +213,6 @@ git switch heranca-templates
 ---
 
 ## 🧪 Testes e Evidências
-
-As evidências devem apresentar capturas do navegador, identificar as versões pelos commits e explicar as mudanças observadas.
-
-| Funcionalidade | Verificação | Situação |
-|---|---|---|
-| Página inicial | Exibição do menu, logo e conteúdo da página. | Abertura confirmada. |
-| Perfil do usuário | Exibição do conteúdo após a correção do bloco de herança. | Abertura confirmada. |
-| Login | Renderização do formulário após a correção do template base. | Abertura confirmada. |
-| Autenticação válida | Envio de credenciais válidas e conferência da resposta. | Validação pendente. |
-| Autenticação inválida | Envio de credenciais inválidas e conferência das mensagens flash. | Validação pendente. |
-| Comparação entre versões | Capturas que demonstrem a diferença visual entre dois commits. | Documentação pendente. |
 
 Exemplo de acesso à rota dinâmica:
 
