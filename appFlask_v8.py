@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 from flask import request   #para trabalhar com os métodos GET e POST
-from flask import flash     #para msgs popup
+from flask import flash     #para popup
 from flask import redirect  #para redirecionar páginas
-
+from flask import jsonify #para retornar dados em JSON
 
 # os templates coloca em outra pasta. 
 # Por padrão, fica na pasta templates e não precisa informar no template_folder,
@@ -34,6 +34,18 @@ def login():
     return render_template("t_login_flash_js_cadastro.html") 
 
 
+
+#TESTE PARA USO DA API
+
+@app_Tayna.route('/api/teste', methods=['GET', 'POST'])
+def test_route():
+    if request.method == 'GET':
+        return jsonify(message="REQUISIÇÃO GET RECEBIDA!"), 200
+    elif request.method == 'POST':
+        return jsonify(message="REQUISIÇÃO POST RECEBIDA!"), 200
+    else:
+        return jsonify(error="Método não permitido"), 405
+    
 """
 Para poder recuperar os argumentos passados nos parâmetros na URL precisa importar o pacote
 from flask import request
